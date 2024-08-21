@@ -1,19 +1,25 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePurchaseOrderDto {
-  @ApiProperty()
-  poNumber: string;
+  @ApiProperty({ default: '' })
+  poNumber: string = '';
 
-  @ApiProperty()
-  vendor: string;
+  @ApiProperty({ default: '' })
+  vendor: string = '';
 
-  @ApiProperty()
-  items: string[]
+  @ApiProperty({ type: () => [ItemDto], default: [{
+    name : "laptop"  , quantity: 1
+  }] })
+  items: ItemDto[] = [];
 
-  @ApiProperty()
-  quantity: number;
-
-  @ApiProperty()
-  status: string;
+  @ApiProperty({ default: 'pending' })
+  status: string = 'pending';
 }
 
+export class ItemDto {
+  @ApiProperty({ default: '' })
+  name: string = '';
+
+  @ApiProperty({ default: 0 })
+  quantity: number = 0;
+}

@@ -4,8 +4,8 @@ import { PurchaseOrdersController } from './purchase-order.controller';
 import { PurchaseOrdersService } from './purchase-order.service';
 import { PurchaseOrder, PurchaseOrderSchema } from './purchase-order.model';
 import { Vendor, VendorSchema } from 'src/vendor/vendor.model';
-import { HistoricalPerformanceService } from 'src/historical/historical.service';
 import { HistoricalPerformance, HistoricalPerformanceSchema } from 'src/historical/historical.model';
+import { VendorsService } from 'src/vendor/vendor.service';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { HistoricalPerformance, HistoricalPerformanceSchema } from 'src/historic
     MongooseModule.forFeature([{ name: HistoricalPerformance.name, schema: HistoricalPerformanceSchema }]),
   ],
   controllers: [PurchaseOrdersController],
-  providers: [PurchaseOrdersService,PurchaseOrdersService,HistoricalPerformanceService],
+  providers: [PurchaseOrdersService,VendorsService],
   exports: [PurchaseOrdersService],
 })
 export class PurchaseOrderModule {}

@@ -1,12 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateVendorDto {
-  @ApiProperty()
+  @ApiProperty({ default: 'Aman Anand' })
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({ default: 'amanand257@gmail.com' })
   contactDetails: string;
 
-  @ApiProperty()
-  address: string;
+  @ApiProperty({ default: 'NIT Kurukshetra' })
+  address: string ;
+
 }

@@ -17,10 +17,10 @@ export class PurchaseOrder {
   @Prop({ required: true })
   deliveryDate: Date;
 
-  @Prop({ required: true})
-  items: string[];
+  @Prop({ type: [{ name: String, quantity: Number }] })
+  items: { name: string, quantity: number }[];
 
-  @Prop({ required: true })
+  @Prop()
   quantity: number;
 
   @Prop({ required: true })
@@ -34,9 +34,6 @@ export class PurchaseOrder {
 
   @Prop({ type: Date, default: null })
   acknowledgmentDate: Date;
-
-  @Prop({ type: Number, default: 0 })
-  responseTime: number;
 }
 
 export const PurchaseOrderSchema = SchemaFactory.createForClass(PurchaseOrder);

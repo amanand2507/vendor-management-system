@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateVendorDto {
-  @ApiProperty()
+  @ApiProperty({ default: 'Aman Anand' })
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({ default: 'amanand257@gmail.com' })
   contactDetails: string;
 
-  @ApiProperty()
-  address: string;
+  @ApiProperty({ default: 'NIT Kurukshetra' })
+  address: string ;
 
-  @ApiProperty()
+  @ApiProperty({ default: 'VENDOR-001' })
   vendorCode: string;
 }
