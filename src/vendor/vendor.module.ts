@@ -1,4 +1,3 @@
-// vendors.module.ts
 import { Module } from '@nestjs/common';
 import { VendorsController } from './vendor.controller';
 import { VendorsService } from './vendor.service';
