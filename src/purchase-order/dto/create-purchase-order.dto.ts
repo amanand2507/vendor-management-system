@@ -8,13 +8,7 @@ export class CreatePurchaseOrderDto {
   vendor: string;
 
   @ApiProperty()
-  orderDate: Date;
-
-  @ApiProperty()
-  deliveryDate: Date;
-
-  @ApiProperty()
-  items: string[];
+  items: string[]
 
   @ApiProperty()
   quantity: number;
@@ -22,3 +16,4 @@ export class CreatePurchaseOrderDto {
   @ApiProperty()
   status: string;
 }
+

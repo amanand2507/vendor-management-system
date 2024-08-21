@@ -35,4 +35,9 @@ export class VendorsController {
   deleteVendor(@Param('vendorId') vendorId: string) {
     return this.vendorsService.deleteVendor(vendorId);
   }
+
+  @Get(':vendorId/performance')
+  getVendorPerformance(@Param('vendorId') vendorId: string) {
+    return this.vendorsService.getVendorPerformance(vendorId);
+  }
 }

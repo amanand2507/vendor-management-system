@@ -9,7 +9,7 @@ import { Vendor } from './vendor.model';
 
 @Injectable()
 export class VendorsService {
-  constructor(@InjectModel(Vendor.name) private readonly vendorModel: Model<Vendor>,) {}
+  constructor(@InjectModel(Vendor.name) private readonly vendorModel: Model<Vendor>) {}
 
   async createVendor(createVendorDto: CreateVendorDto) {
     const vendor = new this.vendorModel(createVendorDto);
@@ -30,6 +30,19 @@ export class VendorsService {
 
   async deleteVendor(vendorId: string) {
     return this.vendorModel.findByIdAndDelete(vendorId).exec();
+  }
+
+  async getVendorPerformance(vendorId: string) {
+    const vendor = await this.vendorModel.findById(vendorId);
+    if (!vendor) {
+      throw new Error('Vendor not found');
+    }
+    return {
+      onTimeDeliveryRate: vendor.onTimeDeliveryRate,
+      qualityRatingAvg: vendor.qualityRatingAvg,
+      averageResponseTime: vendor.averageResponseTime,
+      fulfillmentRate: vendor.fulfillmentRate,
+    };
   }
 
   

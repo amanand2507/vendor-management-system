@@ -4,6 +4,7 @@ import { PurchaseOrdersService } from './purchase-order.service';
 import { CreatePurchaseOrderDto } from './dto/create-purchase-order.dto';
 import { UpdatePurchaseOrderDto } from './dto/update-purchase-order.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { acknowledgeDto } from './dto/acknowledge.dto';
 
 @ApiTags('purchase-orders')
 @Controller('purchase-orders')
@@ -30,8 +31,12 @@ export class PurchaseOrdersController {
     return this.purchaseOrdersService.updatePurchaseOrder(poId, updatePurchaseOrderDto);
   }
 
-  @Delete(':poId')
-  deletePurchaseOrder(@Param('poId') poId: string) {
-    return this.purchaseOrdersService.deletePurchaseOrder(poId);
+  @Post(':poId/acknowledge')
+  async acknowledgePO(@Param('poId') poId: string, @Body() acknowledgeDto: acknowledgeDto) {
+
+    return this.purchaseOrdersService.acknowledgePO(poId,acknowledgeDto.ackDate);
+    
   }
+
+  
 }
